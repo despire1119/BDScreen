@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-bdscreen": {
+    "ddd": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-bdscreen",
+            "outputPath": "dist/ddd",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -25,9 +25,15 @@
             "aot": false,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
+              "src/theme.less",
               "src/styles.styl"
             ],
             "scripts": []
@@ -67,18 +73,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-bdscreen:build"
+            "browserTarget": "ddd:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-bdscreen:build:production"
+              "browserTarget": "ddd:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-bdscreen:build"
+            "browserTarget": "ddd:build"
           }
         },
         "test": {
@@ -115,15 +121,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-bdscreen:serve"
+            "devServerTarget": "ddd:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-bdscreen:serve:production"
+              "devServerTarget": "ddd:serve:production"
             }
           }
         }
       }
-    }},
-  "defaultProject": "angular-bdscreen"
+    }
+  },
+  "defaultProject": "ddd"
 }
